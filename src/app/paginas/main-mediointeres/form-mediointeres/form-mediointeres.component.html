@@ -1,0 +1,14 @@
+<mat-dialog-content>
+  <mat-toolbar><span>Formulario Medios De Interes</span></mat-toolbar>
+
+  <div class="example-container">
+    <form [formGroup]="form"  class="example-container" #MediointeresForm="ngForm">
+      <mat-form-field>
+        <input matInput placeholder="Nombre Del Medio de Interes" formControlName="nombreMedio">
+      </mat-form-field>
+      <br/>
+      <button mat-button (click)="operate()" [disabled]="form.invalid">Guardar</button>
+      <button mat-button color="accent" (click)="close()">Cancelar</button>
+    </form>
+  </div>
+</mat-dialog-content>

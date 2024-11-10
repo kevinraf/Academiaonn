@@ -1,0 +1,26 @@
+<mat-dialog-content>
+  <mat-toolbar><span>Formulario Trabajadores</span></mat-toolbar>
+
+  <div class="example-container">
+    <form [formGroup]="form"  class="example-container" #TrabajadorForm="ngForm">
+      <mat-form-field>
+        <input matInput placeholder="nombre" formControlName="nombre">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="apellido" formControlName="apellido">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="contrasena" formControlName="contrasena">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="cargo" formControlName="cargo">
+      </mat-form-field>
+
+
+
+      <br/>
+      <button mat-button (click)="operate()" [disabled]="form.invalid">Guardar</button>
+      <button mat-button color="accent" (click)="close()">Cancelar</button>
+    </form>
+  </div>
+</mat-dialog-content>

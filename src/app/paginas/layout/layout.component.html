@@ -1,0 +1,71 @@
+<div class="example-container">
+  <mat-toolbar class="example-toolbar">
+    <button class="myButton no-border" mat-icon-button (click)="sidenav.toggle()">
+      @if (!sidenav.opened) {
+        <mat-icon>menu</mat-icon>
+      }@else {
+        <mat-icon>close</mat-icon>
+      }
+    </button>
+    <span>Pedro Paulet</span>
+    <span class="example-spacer"></span>
+    <span class="example-spacer"> </span>
+    <button class="no-border" mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item >
+        <mat-icon>account_box</mat-icon>
+        <span>Mi cuenta</span>
+      </button>
+      <button mat-menu-item (click)="sidenav.opened = false" >
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Salir</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+
+
+  <mat-sidenav-container class="example-sidenav-container">
+    <mat-sidenav #sidenav style="width: 250px" mode="over">
+      <img src="logo.jpg" width="128" style="margin-left: 20px">
+
+      <mat-divider></mat-divider>
+      <button class="myButton" mat-menu-item (click)="sidenav.toggle()"
+              routerLink="/pages/cargo" [routerLinkActive]="['active']" style="cursor: pointer">
+        <mat-icon>scanner</mat-icon>
+        <span>Cargos</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button class="myButton" mat-menu-item (click)="sidenav.toggle()"
+              routerLink="/pages/estudiante" style="cursor: pointer">
+        <mat-icon>view_carousel</mat-icon>
+        <span>Estudiantes</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button class="myButton" mat-menu-item (click)="sidenav.toggle()"
+              routerLink="/pages/insidencia" style="cursor: pointer">
+        <mat-icon>view_carousel</mat-icon>
+        <span>Insidencias</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button class="myButton" mat-menu-item (click)="sidenav.toggle()"
+              routerLink="/pages/mediointeres" style="cursor: pointer">
+        <mat-icon>view_carousel</mat-icon>
+        <span>Medios De Interes</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button class="myButton" mat-menu-item (click)="sidenav.toggle()"
+              routerLink="/pages/trabajador" style="cursor: pointer">
+        <mat-icon>view_carousel</mat-icon>
+        <span>Trabajadores</span>
+      </button>
+      <mat-divider></mat-divider>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet />
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+

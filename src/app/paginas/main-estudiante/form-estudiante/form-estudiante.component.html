@@ -1,0 +1,28 @@
+<mat-dialog-content>
+  <mat-toolbar><span>Formulario Estudiante</span></mat-toolbar>
+
+  <div class="example-container">
+    <form [formGroup]="form"  class="example-container" #EstudianteForm="ngForm">
+      <mat-form-field>
+        <input matInput placeholder="nombre Completo" formControlName="nombreCompleto">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="apellido Paterno" formControlName="apellidoPaterno">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="apellido Materno" formControlName="apellidoMaterno">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="dni" formControlName="dni">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="medio Interes" formControlName="medioInteres">
+      </mat-form-field>
+
+
+      <br/>
+      <button mat-button (click)="operate()" [disabled]="form.invalid">Guardar</button>
+      <button mat-button color="accent" (click)="close()">Cancelar</button>
+    </form>
+  </div>
+</mat-dialog-content>
