@@ -1,29 +1,154 @@
+/* Estilo global para asegurar que el contenido ocupe el 100% del ancho */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor principal para asegurar que los elementos se alineen bien */
 .example-container {
   display: flex;
   flex-direction: column;
-  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+/* Barra de navegación superior, ajustada para ocupar toda la parte superior */
+.mat-toolbar {
+  background-color: #284B2F;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: fixed; /* Fija la barra en la parte superior */
   top: 0;
-  bottom: 0;
   left: 0;
   right: 0;
+  width: 100%;
+  z-index: 100; /* Asegura que siempre quede encima del contenido */
 }
+
+/* Logo y nombre en la barra */
+.mat-toolbar img {
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.mat-toolbar span {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Estilo para el contenedor del menú lateral */
 .example-sidenav-container {
+  display: flex;
+  flex-direction: row;
   flex: 1;
+  height: 100%; /* Asegura que el contenedor ocupe toda la altura disponible */
+  margin-top: 60px; /* Deja espacio debajo de la barra de navegación */
 }
-.example-spacer {
-  flex: 1 1 auto;
+
+/* Menú lateral en pantallas grandes */
+.mat-sidenav {
+  background-color: #f2f2f2;
+  width: 250px; /* Ancho fijo para pantallas grandes */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 60px; /* Alinea el menú debajo de la barra de navegación */
+  left: 0;
+  bottom: 0;
+  z-index: 99; /* Asegura que quede detrás de la barra */
+  transition: transform 0.3s ease-in-out; /* Animación para el menú lateral */
 }
-.active {
+
+/* Menú lateral en pantallas pequeñas (menú hamburguesa) */
+@media (max-width: 768px) {
+  .example-sidenav-container {
+    flex-direction: column;
+  }
+
+  .mat-sidenav {
+    transform: translateX(-100%); /* El menú lateral empieza oculto en dispositivos móviles */
+  }
+
+  .mat-sidenav.opened {
+    transform: translateX(0); /* Muestra el menú lateral cuando está abierto */
+  }
+
+  .mat-toolbar {
+    justify-content: space-between; /* Alinea los botones en el menú */
+  }
+}
+
+/* Estilo para los botones del menú */
+.myButton {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 10px;
+  color: black;
+  background-color: transparent;
+  text-align: left;
+  border: none;
+}
+
+.myButton:hover {
   background-color: #dcdcdcc1;
 }
-.myButton:focus{
-  box-shadow: 0 0 rgba(255, 255, 255, 1) !important;
-  transition:none !important;
-  background-color: rgba(255, 255, 255, 1) !important;
-  -webkit-tap-highlight-color:rgba(255, 255, 255, 1) !important;
+
+/* Estilo para los iconos del menú */
+.mat-icon {
+  margin-right: 10px;
 }
-.no-border {
-  border: none; /* Elimina cualquier borde */
-  box-shadow: none; /* Si tiene sombra, también la eliminamos */
-  outline: none; /* Quita el borde al hacer focus */
+
+/* Estilo para los dividers (líneas de separación) */
+.mat-divider {
+  margin: 10px 0;
 }
+
+/* Ajustes para el contenido principal */
+.mat-sidenav-content {
+  flex: 1;
+  margin-left: 250px; /* Da espacio para el menú lateral en pantallas grandes */
+  padding: 20px;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .mat-sidenav-content {
+    margin-left: 0; /* En pantallas pequeñas, el contenido ocupa todo el espacio disponible */
+  }
+}
+
+/* Ajuste para el formulario interno, asegurando que se ajuste al tamaño de la pantalla */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 100%;
+}
+
+input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px;
+  background-color: #284B2F;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #3c6e47;
+}
+

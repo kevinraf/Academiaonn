@@ -9,15 +9,19 @@ import {FormTrabajadorComponent} from "./main-trabajador/form-trabajador/form-tr
 import {FormMediointeresComponent} from "./main-mediointeres/form-mediointeres/form-mediointeres.component";
 import {FormInsidenciaComponent} from "./main-insidencia/form-insidencia/form-insidencia.component";
 import {FormEstudianteComponent} from "./main-estudiante/form-estudiante/form-estudiante.component";
+import {DashboardComponent} from "./dashboard/dashboard.component";
+import {certGuard} from "../guard/cert.guard";
+import {Not403Component} from "./not403/not403.component";
 
 export const pagesRoutes: Routes = [
+  { path: 'dashboard', component: DashboardComponent, canActivate:[certGuard] },
   {
     path: 'cargo',
     component: MainCargoComponent,
     children: [
       { path: 'new', component: FormCargoComponent },
       { path: 'edit/:id', component: FormCargoComponent },
-    ],
+    ], canActivate:[certGuard]
   },
   {
     path: 'estudiante',
@@ -25,7 +29,7 @@ export const pagesRoutes: Routes = [
     children: [
       { path: 'new', component: FormEstudianteComponent },
       { path: 'edit/:id', component: FormEstudianteComponent },
-    ],
+    ], canActivate:[certGuard]
   },
   {
     path: 'insidencia',
@@ -33,7 +37,7 @@ export const pagesRoutes: Routes = [
     children: [
       { path: 'new', component: FormInsidenciaComponent },
       { path: 'edit/:id', component: FormInsidenciaComponent },
-    ],
+    ], canActivate:[certGuard]
   },
   {
     path: 'mediointeres',
@@ -41,7 +45,7 @@ export const pagesRoutes: Routes = [
     children: [
       { path: 'new', component: FormMediointeresComponent },
       { path: 'edit/:id', component: FormMediointeresComponent },
-    ],
+    ], canActivate:[certGuard]
   },
   {
     path: 'trabajador',
@@ -49,7 +53,8 @@ export const pagesRoutes: Routes = [
     children: [
       { path: 'new', component: FormTrabajadorComponent },
       { path: 'edit/:id', component: FormTrabajadorComponent },
-    ],
+    ], canActivate:[certGuard]
   },
+  { path: 'not-403', component: Not403Component},
 
 ];

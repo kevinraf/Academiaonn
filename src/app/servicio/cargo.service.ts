@@ -3,8 +3,8 @@ import {GenericService} from "./generic.service";
 import {BehaviorSubject, Subject} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment.development";
-
 import {Cargo} from "../modelo/Cargo";
+
 @Injectable({
   providedIn: 'root'
 })

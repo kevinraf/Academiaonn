@@ -1,29 +1,33 @@
-.example-container {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+.header {
+ background-color: #284B2F;
+ color: #fff;
+ display: flex;
+ align-items: center;
+ padding: 20px;
+ width: 100%;
 }
-.example-sidenav-container {
-  flex: 1;
+
+.logo {
+ width: 100px;
+ margin-right: 10px;
 }
-.example-spacer {
-  flex: 1 1 auto;
+
+.login-form {
+ background-color: #f2f2f2;
+ padding: 30px;
+ border-radius: 10px;
+ box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+ width: 400px;
+ margin: 50px auto;
 }
-.active {
-  background-color: #dcdcdcc1;
+
+.btn-success {
+ background-color: #28a745;
+ border-color: #28a745;
 }
-.myButton:focus{
-  box-shadow: 0 0 rgba(255, 255, 255, 1) !important;
-  transition:none !important;
-  background-color: rgba(255, 255, 255, 1) !important;
-  -webkit-tap-highlight-color:rgba(255, 255, 255, 1) !important;
-}
-.no-border {
-  border: none; /* Elimina cualquier borde */
-  box-shadow: none; /* Si tiene sombra, también la eliminamos */
-  outline: none; /* Quita el borde al hacer focus */
+
+.sin-borde {
+ border: none;
+ background-color: #C7C88E;
+ color: #000;
 }

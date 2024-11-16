@@ -1,78 +1,114 @@
-import {Component, Inject, OnInit, ViewChild} from '@angular/core';
-import {FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators} from "@angular/forms";
-import {NgIf} from "@angular/common";
-import {MaterialModule} from "../../../material/material.module";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {switchMap} from "rxjs";
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { MaterialModule } from "../../../material/material.module";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import { switchMap } from "rxjs";
+import { Cargo } from "../../../modelo/Cargo";
+import { CargoService } from "../../../servicio/cargo.service";
+import { MatSnackBar } from '@angular/material/snack-bar';
 
-
-import {Cargo} from "../../../modelo/Cargo";
-import {CargoService} from "../../../servicio/cargo.service";
-
+// Importamos CommonModule y ReactiveFormsModule
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-form-cargo',
   standalone: true,
-  imports: [MaterialModule, FormsModule, NgIf, ReactiveFormsModule],
+  imports: [MaterialModule, CommonModule, ReactiveFormsModule],  // Asegúrate de que estos módulos están importados
   templateUrl: './form-cargo.component.html',
-  styleUrl: './form-cargo.component.css'
+  styleUrls: ['./form-cargo.component.css']
 })
 export class FormCargoComponent implements OnInit {
-  @ViewChild('CargoForm') cargoForm!: NgForm ;
   form: FormGroup;
-  constructor(
-    @Inject(MAT_DIALOG_DATA) private data: Cargo,
-    private krService: CargoService,
-    private _dialogRef: MatDialogRef<FormCargoComponent>
-  ){}
-  ngOnInit(): void {
-    if(this.data!==undefined){
-      console.log(this.data['nombreCargo']);
+  public data: Cargo;
 
-      this.form = new FormGroup({
-        idCargo: new FormControl(this.data['idCargo']),
-        nombreCargo: new FormControl(this.data['nombreCargo'], [Validators.required, Validators.minLength(3), Validators.maxLength(50)])
-      });
-    }else{
-      this.form = new FormGroup({
-        idCargo: new FormControl(0),
-        nombreCargo: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(70)])
-      });
-    }
+  constructor(
+    @Inject(MAT_DIALOG_DATA) private _data: Cargo, // Recibiendo los datos
+    private krService: CargoService,
+    private _dialogRef: MatDialogRef<FormCargoComponent>,
+    private _snackBar: MatSnackBar // Inyectamos el MatSnackBar
+  ) {
+    this.data = _data;
   }
-  close(){
+
+  ngOnInit(): void {
+    this.form = new FormGroup({
+      idCargo: new FormControl(this.data ? this.data.idCargo : 0),
+      nombreCargo: new FormControl(this.data ? this.data.nombreCargo : '', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(50)
+      ])
+    });
+  }
+
+  close(): void {
     this._dialogRef.close();
   }
-  operate(){
-    const kr: Cargo = new Cargo();
-    kr.idCargo = this.form.value['idCargo'];
-    kr.nombreCargo = this.form.value['nombreCargo'];
 
-    if(this.cargoForm.valid){
-      if(kr.idCargo > 0){
-        //UPDATE
-        this.krService.update(kr.idCargo, kr)
-          .pipe(switchMap( ()=> this.krService.findAll() ))
-          .subscribe(data => {
-            this.krService.setCargoChange(data);
-            this.krService.setMessageChange('UPDATED!');
-            this.close();
+  operate(): void {
+    if (this.form.valid) {
+      const cargo: Cargo = this.form.value;
+
+      if (cargo.idCargo > 0) {
+        this.krService.update(cargo.idCargo, cargo)
+          .pipe(switchMap(() => this.krService.findAll()))
+          .subscribe({
+            next: data => {
+              this.krService.setCargoChange(data);
+              this.krService.setMessageChange('UPDATED!');
+              // Mostramos el Snackbar con la clase 'yellow-snackbar'
+              this._snackBar.open('UPDATED!', '', {
+                duration: 3000,
+                panelClass: ['yellow-snackbar'], // Se usa la clase correcta
+                verticalPosition: 'top',
+                horizontalPosition: 'right'
+              });
+              this.close();
+            },
+            error: err => {
+              this.krService.setMessageChange('Error al actualizar el cargo');
+              // Mostramos el Snackbar con la clase 'error-snackbar'
+              this._snackBar.open('Error al actualizar', '', {
+                duration: 3000,
+                panelClass: ['error-snackbar'],
+                verticalPosition: 'top',
+                horizontalPosition: 'right'
+              });
+            }
           });
-      }else{
-        //INSERT
-        this.krService.save(kr)
-          .pipe(switchMap( ()=> this.krService.findAll() ))
-          .subscribe(data => {
-            this.krService.setCargoChange(data);
-            this.krService.setMessageChange('CREATED!');
-            this.close();
+      } else {
+        this.krService.save(cargo)
+          .pipe(switchMap(() => this.krService.findAll()))
+          .subscribe({
+            next: data => {
+              this.krService.setCargoChange(data);
+              this.krService.setMessageChange('CREATED!');
+              // Mostramos el Snackbar con la clase 'green-snackbar'
+              this._snackBar.open('CREATED!', '', {
+                duration: 3000,
+                panelClass: ['green-snackbar'], // Se usa la clase correcta
+                verticalPosition: 'top',
+                horizontalPosition: 'right'
+              });
+              this.close();
+            },
+            error: err => {
+              this.krService.setMessageChange('Error al crear el cargo');
+              // Mostramos el Snackbar con la clase 'error-snackbar'
+              this._snackBar.open('Error al crear', '', {
+                duration: 3000,
+                panelClass: ['error-snackbar'],
+                verticalPosition: 'top',
+                horizontalPosition: 'right'
+              });
+            }
           });
       }
-    }else{
-      console.log("Error....")
     }
   }
-  get f(){
+
+  get f() {
     return this.form.controls;
   }
 }

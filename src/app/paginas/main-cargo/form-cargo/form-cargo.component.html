@@ -1,16 +1,28 @@
 <mat-dialog-content>
-  <mat-toolbar><span>Formulario</span></mat-toolbar>
+  <mat-toolbar>
+    <span>{{ data ? 'Editar Cargo' : 'Nuevo Cargo' }}</span>
+  </mat-toolbar>
 
   <div class="example-container">
-    <form [formGroup]="form"  class="example-container" #CargoForm="ngForm">
-
-      <mat-form-field>
-        <input matInput placeholder="Nombre" formControlName="nombreCargo">
+    <form [formGroup]="form" #CargoForm="ngForm">
+      <mat-form-field class="full-width">
+        <mat-label>Nombre del Cargo</mat-label>
+        <input matInput formControlName="nombreCargo">
+        <mat-error *ngIf="f['nombreCargo'].hasError('required')">
+          Nombre es requerido
+        </mat-error>
+        <mat-error *ngIf="f['nombreCargo'].hasError('minlength')">
+          Mínimo 3 caracteres
+        </mat-error>
+        <mat-error *ngIf="f['nombreCargo'].hasError('maxlength')">
+          Máximo 50 caracteres
+        </mat-error>
       </mat-form-field>
 
-      <br/>
-      <button mat-button (click)="operate()" [disabled]="form.invalid">Guardar</button>
-      <button mat-button color="accent" (click)="close()">Cancelar</button>
+      <div class="button-group">
+        <button mat-button color="primary" (click)="operate()" [disabled]="form.invalid">Guardar</button>
+        <button mat-button color="accent" (click)="close()">Cancelar</button>
+      </div>
     </form>
   </div>
 </mat-dialog-content>

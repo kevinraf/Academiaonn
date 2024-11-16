@@ -1,72 +1,76 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatTableDataSource} from "@angular/material/table";
-import {MatPaginator} from "@angular/material/paginator";
-import {MatSort} from "@angular/material/sort";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {MatDialog} from "@angular/material/dialog";
-import {switchMap} from "rxjs";
-import {RouterLink, RouterOutlet} from "@angular/router";
-import {MaterialModule} from "../../material/material.module";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatTableDataSource } from "@angular/material/table";
+import { MatPaginator } from "@angular/material/paginator";
+import { MatSort } from "@angular/material/sort";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { MatDialog } from "@angular/material/dialog";
+import { switchMap } from "rxjs";
+import { RouterLink, RouterOutlet } from "@angular/router";
+import { MaterialModule } from "../../material/material.module";
 
-
-
-import {FormCargoComponent} from "./form-cargo/form-cargo.component";
-import {CargoService} from "../../servicio/cargo.service";
-import {Cargo} from "../../modelo/Cargo";
+import { FormCargoComponent } from "./form-cargo/form-cargo.component";
+import { CargoService } from "../../servicio/cargo.service";
+import { Cargo } from "../../modelo/Cargo";
 
 @Component({
   selector: 'app-main-cargo',
   standalone: true,
   imports: [MaterialModule, RouterOutlet, RouterLink],
   templateUrl: './main-cargo.component.html',
-  styleUrl: './main-cargo.component.css'
+  styleUrls: ['./main-cargo.component.css']
 })
 export class MainCargoComponent implements OnInit {
   dataSource: MatTableDataSource<Cargo>;
   columnsDefinitions = [
-    { def: 'idCategoria', label: 'idCategoria', hide: true},
-    { def: 'nombreCargo', label: 'nombreCargo', hide: false},
-    { def: 'acciones', label: 'acciones', hide: false}
+    { def: 'idCargo', label: 'ID Cargo', hide: true },
+    { def: 'nombreCargo', label: 'Cargo', hide: false },
+    { def: 'acciones', label: 'Acciones', hide: false }
   ];
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+
   constructor(
     private krervice: CargoService,
     private _dialog: MatDialog,
     private _snackBar: MatSnackBar
-  ){}
+  ) {}
+
   ngOnInit(): void {
     this.krervice.findAll().subscribe(data => this.createTable(data));
-
     this.krervice.getCargoChange().subscribe(data => this.createTable(data));
-    this.krervice.getMessageChange().subscribe(data => this._snackBar.open(data, 'INFO', {duration: 2000}))
+    this.krervice.getMessageChange().subscribe(data => this._snackBar.open(data, 'INFO', { duration: 2000 }));
   }
-  createTable(data: Cargo[]){
+
+  createTable(data: Cargo[]): void {
     this.dataSource = new MatTableDataSource(data);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-  getDisplayedColumns(){
+
+  getDisplayedColumns() {
     return this.columnsDefinitions.filter(cd => !cd.hide).map(cd => cd.def);
   }
-  openDialog(krentidad?: Cargo){
+
+  openDialog(cargo?: Cargo): void {
     this._dialog.open(FormCargoComponent, {
       width: '750px',
-      data: krentidad,
+      data: cargo,
       disableClose: true
     });
   }
-  applyFilter(event: Event) {
+
+  applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
   }
-  delete(idMedic: number){
-    this.krervice.delete(idMedic)
-      .pipe(switchMap( ()=> this.krervice.findAll()))
+
+  delete(idCargo: number): void {
+    this.krervice.delete(idCargo)
+      .pipe(switchMap(() => this.krervice.findAll()))
       .subscribe(data => {
         this.krervice.setCargoChange(data);
         this.krervice.setMessageChange('DELETED!');
