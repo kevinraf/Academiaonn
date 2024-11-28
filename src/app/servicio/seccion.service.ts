@@ -16,10 +16,10 @@ export class SeccionService extends GenericService<Seccion>{
   constructor(protected override http: HttpClient) {
     super(http, `${environment.HOST}/secciones`);
   }
-  setCategoriaChange(data: Seccion[]){
+  setSeccionChange(data: Seccion[]){
     this.kr.next(data);
   }
-  getCategoriaChange(){
+  getSeccionChange(){
     return this.kr.asObservable();
   }
   setMessageChange(data: string){

@@ -16,10 +16,10 @@ export class PeriodoService extends GenericService<Periodo>{
   constructor(protected override http: HttpClient) {
     super(http, `${environment.HOST}/periodos`);
   }
-  setCategoriaChange(data: Periodo[]){
+  setPeriodoChange(data: Periodo[]){
     this.kr.next(data);
   }
-  getCategoriaChange(){
+  getPeriodoChange(){
     return this.kr.asObservable();
   }
   setMessageChange(data: string){

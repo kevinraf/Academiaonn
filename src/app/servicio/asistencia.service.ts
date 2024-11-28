@@ -16,10 +16,10 @@ export class AsistenciaService extends GenericService<Asistencia>{
   constructor(protected override http: HttpClient) {
     super(http, `${environment.HOST}/asistencias`);
   }
-  setCategoriaChange(data: Asistencia[]){
+  setAsistenciaChange(data: Asistencia[]){
     this.kr.next(data);
   }
-  getCategoriaChange(){
+  getAsistenciaChange(){
     return this.kr.asObservable();
   }
   setMessageChange(data: string){

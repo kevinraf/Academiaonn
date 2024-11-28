@@ -1,1 +1,35 @@
-<p>form-apoderado works!</p>
+<mat-dialog-content>
+  <mat-toolbar><span>Formulario</span></mat-toolbar>
+
+  <div class="example-container">
+    <form [formGroup]="form"  class="example-container" #ApoderadoForm="ngForm">
+
+      <mat-form-field>
+        <input matInput placeholder="Nombres completo" formControlName="nombrecompleto">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Apellido Paterno" formControlName="apellidopaterno">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Apellido Materno" formControlName="apellidomaterno">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Celular 9 digitos" formControlName="celular">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Celular de Respaldo 9 digitos" formControlName="celularrespaldo">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="DNI 8 digitos" formControlName="dni">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="E-mail => example@gmail.com" formControlName="correo">
+      </mat-form-field>
+
+      <br/>
+      <button mat-button (click)="operate()" [disabled]="form.invalid">Guardar</button>
+      <button mat-button color="accent" (click)="close()">Cancelar</button>
+    </form>
+  </div>
+</mat-dialog-content>
+

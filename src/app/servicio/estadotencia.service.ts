@@ -16,10 +16,10 @@ export class EstadotenciaService extends GenericService<Estadotencia>{
   constructor(protected override http: HttpClient) {
     super(http, `${environment.HOST}/estadotencias`);
   }
-  setCategoriaChange(data: Estadotencia[]){
+  setEstadotenciaChange(data: Estadotencia[]){
     this.kr.next(data);
   }
-  getCategoriaChange(){
+  getEstadotenciaChange(){
     return this.kr.asObservable();
   }
   setMessageChange(data: string){

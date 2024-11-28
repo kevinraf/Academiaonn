@@ -16,10 +16,10 @@ export class NivelService extends GenericService<Nivel>{
   constructor(protected override http: HttpClient) {
     super(http, `${environment.HOST}/niveles`);
   }
-  setCategoriaChange(data: Nivel[]){
+  setNivelChange(data: Nivel[]){
     this.kr.next(data);
   }
-  getCategoriaChange(){
+  getNivelChange(){
     return this.kr.asObservable();
   }
   setMessageChange(data: string){

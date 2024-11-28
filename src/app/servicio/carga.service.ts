@@ -16,10 +16,10 @@ export class CargaService extends GenericService<Carga>{
   constructor(protected override http: HttpClient) {
     super(http, `${environment.HOST}/cargas`);
   }
-  setCategoriaChange(data: Carga[]){
+  setCargaChange(data: Carga[]){
     this.kr.next(data);
   }
-  getCategoriaChange(){
+  getCargaChange(){
     return this.kr.asObservable();
   }
   setMessageChange(data: string){

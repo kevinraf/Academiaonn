@@ -16,10 +16,10 @@ export class InsidenciaService extends GenericService<Insidencia>{
   constructor(protected override http: HttpClient) {
     super(http, `${environment.HOST}/insidencias`);
   }
-  setCategoriaChange(data: Insidencia[]){
+  setInsidenciaChange(data: Insidencia[]){
     this.kr.next(data);
   }
-  getCategoriaChange(){
+  getInsidenciaChange(){
     return this.kr.asObservable();
   }
   setMessageChange(data: string){

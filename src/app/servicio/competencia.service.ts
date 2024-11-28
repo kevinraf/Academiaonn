@@ -16,10 +16,10 @@ export class CompetenciaService extends GenericService<Competencia>{
   constructor(protected override http: HttpClient) {
     super(http, `${environment.HOST}/competencias`);
   }
-  setCategoriaChange(data: Competencia[]){
+  setCompetenciaChange(data: Competencia[]){
     this.kr.next(data);
   }
-  getCategoriaChange(){
+  getCompetenciaChange(){
     return this.kr.asObservable();
   }
   setMessageChange(data: string){

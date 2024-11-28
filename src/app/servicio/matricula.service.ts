@@ -16,10 +16,10 @@ export class MatriculaService extends GenericService<Matricula>{
   constructor(protected override http: HttpClient) {
     super(http, `${environment.HOST}/matriculas`);
   }
-  setCategoriaChange(data: Matricula[]){
+  setMatriculaChange(data: Matricula[]){
     this.kr.next(data);
   }
-  getCategoriaChange(){
+  getMatriculaChange(){
     return this.kr.asObservable();
   }
   setMessageChange(data: string){

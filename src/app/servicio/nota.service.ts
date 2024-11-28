@@ -16,10 +16,10 @@ export class NotaService extends GenericService<Nota>{
   constructor(protected override http: HttpClient) {
     super(http, `${environment.HOST}/notas`);
   }
-  setCategoriaChange(data: Nota[]){
+  setNotaChange(data: Nota[]){
     this.kr.next(data);
   }
-  getCategoriaChange(){
+  getNotaChange(){
     return this.kr.asObservable();
   }
   setMessageChange(data: string){

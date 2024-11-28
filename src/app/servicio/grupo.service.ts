@@ -16,10 +16,10 @@ export class GrupoService extends GenericService<Grupo>{
   constructor(protected override http: HttpClient) {
     super(http, `${environment.HOST}/grupos`);
   }
-  setCategoriaChange(data: Grupo[]){
+  setGrupoChange(data: Grupo[]){
     this.kr.next(data);
   }
-  getCategoriaChange(){
+  getGrupoChange(){
     return this.kr.asObservable();
   }
   setMessageChange(data: string){

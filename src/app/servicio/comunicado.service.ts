@@ -16,10 +16,10 @@ export class ComunicadoService extends GenericService<Comunicado>{
   constructor(protected override http: HttpClient) {
     super(http, `${environment.HOST}/comunicados`);
   }
-  setCategoriaChange(data: Comunicado[]){
+  setComunicadoChange(data: Comunicado[]){
     this.kr.next(data);
   }
-  getCategoriaChange(){
+  getComunicadoChange(){
     return this.kr.asObservable();
   }
   setMessageChange(data: string){

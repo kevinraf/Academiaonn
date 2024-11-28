@@ -16,10 +16,10 @@ export class SedeService extends GenericService<Sede>{
   constructor(protected override http: HttpClient) {
     super(http, `${environment.HOST}/sedes`);
   }
-  setCategoriaChange(data: Sede[]){
+  setSedeChange(data: Sede[]){
     this.kr.next(data);
   }
-  getCategoriaChange(){
+  getSedeChange(){
     return this.kr.asObservable();
   }
   setMessageChange(data: string){

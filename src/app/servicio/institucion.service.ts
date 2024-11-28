@@ -16,10 +16,10 @@ export class InstitucionService extends GenericService<Institucion>{
   constructor(protected override http: HttpClient) {
     super(http, `${environment.HOST}/instituciones`);
   }
-  setCategoriaChange(data: Institucion[]){
+  setInstitucionChange(data: Institucion[]){
     this.kr.next(data);
   }
-  getCategoriaChange(){
+  getInstitucionChange(){
     return this.kr.asObservable();
   }
   setMessageChange(data: string){

@@ -16,10 +16,10 @@ export class EstudianteService extends GenericService<Estudiante>{
   constructor(protected override http: HttpClient) {
     super(http, `${environment.HOST}/estudiantes`);
   }
-  setCategoriaChange(data: Estudiante[]){
+  setEstudianteChange(data: Estudiante[]){
     this.kr.next(data);
   }
-  getCategoriaChange(){
+  getEstudianteChange(){
     return this.kr.asObservable();
   }
   setMessageChange(data: string){

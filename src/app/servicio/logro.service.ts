@@ -16,10 +16,10 @@ export class LogroService extends GenericService<Logro>{
   constructor(protected override http: HttpClient) {
     super(http, `${environment.HOST}/logros`);
   }
-  setCategoriaChange(data: Logro[]){
+  setLogroChange(data: Logro[]){
     this.kr.next(data);
   }
-  getCategoriaChange(){
+  getLogroChange(){
     return this.kr.asObservable();
   }
   setMessageChange(data: string){

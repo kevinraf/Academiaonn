@@ -16,10 +16,10 @@ export class ApoderadoService extends GenericService<Apoderado>{
   constructor(protected override http: HttpClient) {
     super(http, `${environment.HOST}/apoderados`);
   }
-  setCategoriaChange(data: Apoderado[]){
+  setApoderadoChange(data: Apoderado[]){
     this.kr.next(data);
   }
-  getCategoriaChange(){
+  getApoderadoChange(){
     return this.kr.asObservable();
   }
   setMessageChange(data: string){

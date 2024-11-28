@@ -16,10 +16,10 @@ export class PlanService extends GenericService<Plan>{
   constructor(protected override http: HttpClient) {
     super(http, `${environment.HOST}/planes`);
   }
-  setCategoriaChange(data: Plan[]){
+  setPlanChange(data: Plan[]){
     this.kr.next(data);
   }
-  getCategoriaChange(){
+  getPlanChange(){
     return this.kr.asObservable();
   }
   setMessageChange(data: string){

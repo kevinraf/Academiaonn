@@ -1,1 +1,20 @@
-<p>form-curso works!</p>
+<mat-dialog-content>
+  <mat-toolbar><span>Formulario</span></mat-toolbar>
+
+  <div class="example-container">
+    <form [formGroup]="form"  class="example-container" #CursoForm="ngForm">
+
+      <mat-form-field>
+        <input matInput placeholder="Nombre del Curso" formControlName="nombre">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Promedio Final" formControlName="promedioGeneral">
+      </mat-form-field>
+
+      <br/>
+      <button mat-button (click)="operate()" [disabled]="form.invalid">Guardar</button>
+      <button mat-button color="accent" (click)="close()">Cancelar</button>
+    </form>
+  </div>
+</mat-dialog-content>
+

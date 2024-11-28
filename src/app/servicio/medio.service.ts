@@ -16,10 +16,10 @@ export class MedioService extends GenericService<Medio>{
   constructor(protected override http: HttpClient) {
     super(http, `${environment.HOST}/medios`);
   }
-  setCategoriaChange(data: Medio[]){
+  setMedioChange(data: Medio[]){
     this.kr.next(data);
   }
-  getCategoriaChange(){
+  getMedioChange(){
     return this.kr.asObservable();
   }
   setMessageChange(data: string){

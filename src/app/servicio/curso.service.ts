@@ -16,10 +16,10 @@ export class CursoService extends GenericService<Curso>{
   constructor(protected override http: HttpClient) {
     super(http, `${environment.HOST}/cursos`);
   }
-  setCategoriaChange(data: Curso[]){
+  setCursoChange(data: Curso[]){
     this.kr.next(data);
   }
-  getCategoriaChange(){
+  getCursoChange(){
     return this.kr.asObservable();
   }
   setMessageChange(data: string){

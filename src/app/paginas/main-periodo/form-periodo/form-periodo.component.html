@@ -1,1 +1,17 @@
-<p>form-periodo works!</p>
+<mat-dialog-content>
+  <mat-toolbar><span>Formulario</span></mat-toolbar>
+
+  <div class="example-container">
+    <form [formGroup]="form"  class="example-container" #PeriodoForm="ngForm">
+
+      <mat-form-field>
+        <input matInput placeholder="Nombre del Periodo" formControlName="nombrePeriodo">
+      </mat-form-field>
+
+      <br/>
+      <button mat-button (click)="operate()" [disabled]="form.invalid">Guardar</button>
+      <button mat-button color="accent" (click)="close()">Cancelar</button>
+    </form>
+  </div>
+</mat-dialog-content>
+
