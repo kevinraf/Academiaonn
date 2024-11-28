@@ -10,6 +10,6 @@ export class Trabajador {
     celular: string;
     correo: string;
     institucion: Institucion;
-    usuario: Usuario;
+    usuario: string;
 
 }

@@ -9,7 +9,7 @@ export class Estudiante {
   correo: string;
   celular: string;
   fechanacimiento: string;
-  usuario: Usuario;
+  usuario: string;
 
 
 }
