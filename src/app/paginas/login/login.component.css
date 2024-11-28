@@ -1,33 +1,91 @@
+/* General Body Styling */
+body {
+  background-color: #c6c6c8;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Header Styling */
 .header {
- background-color: #284B2F;
- color: #fff;
- display: flex;
- align-items: center;
- padding: 20px;
- width: 100%;
+  background-color: #198554;
+  text-align: center;
+  padding: 1.5rem 0;
 }
 
-.logo {
- width: 100px;
- margin-right: 10px;
+.header img {
+  width: 80px;
+  margin-bottom: 10px;
 }
 
+.header h1 {
+  font-size: 2rem;
+  color: #198554;
+}
+
+/* Form Styling */
 .login-form {
- background-color: #f2f2f2;
- padding: 30px;
- border-radius: 10px;
- box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
- width: 400px;
- margin: 50px auto;
+  max-width: 400px;
+  margin: auto;
+  background-color: #ffffff;
+  padding: 20px 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.btn-success {
- background-color: #28a745;
- border-color: #28a745;
+h2.Acceso {
+  color: #198554;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Input fields styling */
+.position-relative {
+  position: relative;
 }
 
 .sin-borde {
- border: none;
- background-color: #C7C88E;
- color: #000;
+  border: none;
+  border-bottom: 2px solid #c68d25;
+  box-shadow: none;
+  border-radius: 0;
+  padding-left: 2.5rem;  /* Ajuste del padding para los íconos */
+}
+
+.sin-borde:focus {
+  border-bottom: 2px solid #198554;
+  outline: none;
+}
+
+.fa-user,
+.fa-lock {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #999;
+}
+
+/* Aseguramos que el ícono de ver contraseña (fa-eye) esté alineado correctamente */
+.fa-eye,
+.fa-eye-slash {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #999;
+}
+
+/* Button Styling */
+button {
+  margin-top: 15px;
+  padding: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+button:disabled {
+  background-color: #fbfbfb;
+  cursor: not-allowed;
 }
