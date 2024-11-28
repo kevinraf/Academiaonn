@@ -1,5 +1,220 @@
-<div class="principal-container">
-  <h1>Bienvenido a la Página Principal</h1>
-  <p>Esta es la página de inicio de tu aplicación.</p>
-  <button (click)="goToLogin()" class="btn btn-primary">Ir al Login</button>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedro Paulet</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+<div class="rectangle blue">
+  <div class="links">
+    <a href="#footer" class="link">Direccion</a>
+    <a href="#footer" class="link">Contactanos</a>
+  </div>
+  <button (click)="goToLogin()" class="btn btn-primary">Iniciar sesión</button>
+
 </div>
+
+<div class="rectangle green">
+  <img src="logo.jpg" alt="Imagen" class="image">
+
+  <div class="buttons">
+    <button class="btn" onclick="scrollToComunicados()">Comunicados</button>
+    <button class="btn" onclick="scrollToLogros()">Logros</button>
+  </div>
+</div>
+<div class="carrusel">
+
+  <div class="carousel-container">
+    <img src="imagen1.jpeg" alt="Imagen 1" class="carousel-image">
+    <img src="imagen2.jpeg" alt="Imagen 2" class="carousel-image">
+    <img src="imagen3.jpeg" alt="Imagen 3" class="carousel-image">
+
+    <button class="prev-btn"><</button>
+    <button class="next-btn">></button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+<div class="mission-vision">
+  <div class="mission">
+    <h3>Misión</h3>
+    <p>Somos una institución educativa de gestión privada y nuestra misión es lograr que todas y todos los estudiantes culminen la escolaridad en el nivel: Primaria y Secundaria.  Que  consoliden  los  aprendizajes  establecidos  en  el  currículo nacional y alcancen su desarrollo integral en la práctica de valores, inclusivos, de sana  convivencia  y libres de violencia en el marco  de una formación en disciplina.</p>
+  </div>
+
+  <div class="vision">
+    <h3>Visión</h3>
+    <p>Al 2026, la IE Privada “PEDRO PAULET” anhelamos ser reconocidos como una institución  educativa  Privada  que  forma  a  los  estudiantes  con  autonomía, competitivos, accediendo el mundo letrado, resuelvan problemas, practiquen valores, se asuman ciudadanos con derechos y responsabilidades y contribuyan al desarrollo de su comunidad y del país combinando su capital cultural y natural con los avances mundiales en concordancia con el perfil de egreso del CNEB y principios de una educación basados en la disciplina y valores cívico patriótico asumidos por la institución educativa.</p>
+  </div>
+</div>
+
+<div class="datos">
+  <h2 class="datos-title">Conoce nuestros niveles académicos</h2>
+
+  <div class="data-container">
+    <div class="data-item">
+      <img src="inicial1.png" alt="Imagen 1" class="data-image">
+      <h3 class="data-title">Inicial</h3>
+      <p class="data-text">Texto descriptivo para el primer bloque.</p>
+    </div>
+
+    <div class="data-item">
+      <img src="primaria1.png" alt="Imagen 2" class="data-image">
+      <h3 class="data-title">Primaria</h3>
+      <p class="data-text">Texto descriptivo para el segundo bloque.</p>
+    </div>
+
+    <div class="data-item">
+      <img src="secundaria1.jpeg" alt="Imagen 3" class="data-image">
+      <h3 class="data-title">Secundaria</h3>
+      <p class="data-text">Texto descriptivo para el tercer bloque.</p>
+    </div>
+  </div>
+</div>
+
+<div class="comunicados" id="comunicados">
+  <h2>Comunicados</h2>
+
+  <ul class="comunicados-list">
+    <li class="comunicado-item">
+      <h3 class="comunicado-title">Apertura de inscripciones</h3>
+      <p class="comunicado-text">El dia 02/01/2025 se aperturan las inscripciones en la sede Juliaca, Puno y Ilave</p>
+    </li>
+    <li class="comunicado-item">
+      <h3 class="comunicado-title">Dia del logro</h3>
+      <p class="comunicado-text">El dia 05/05/2024 se realizara la actividad del dia del logro donde los estudiantes de todos los niveles mostraran sus logro de aprendizaje.</p>
+    </li>
+    <li class="comunicado-item">
+      <h3 class="comunicado-title">Feria de ciencia</h3>
+      <p class="comunicado-text">El dia 16/09/2024 se realizara la actividad del dia de la feria de ciencias donde los estudiantes de todos los niveles mostraran sus esperimentos realizados por ellos.</p>
+    </li>
+  </ul>
+</div>
+
+<div class="logros" id="logros">
+  <h2>Logros</h2>
+  <ul class="logros-list">
+    <li class="logro-item">
+      <img src="logro1.jpg" alt="Imagen de logro" class="logro-image">
+      <div class="logro-content">
+        <h3 class="logro-title">Ingresantes confederación nacional de periodistas</h3>
+        <p class="logro-text">Este es el contenido del primer logro. Aquí puede ir una breve descripción.</p>
+      </div>
+    </li>
+    <li class="logro-item">
+      <img src="logro2.jpg" alt="Imagen de logro" class="logro-image">
+      <div class="logro-content">
+        <h3 class="logro-title">Concurso Nacional de Escoltas y Estado Mayor</h3>
+        <p class="logro-text">Este es el contenido del segundo logro. Aquí puede ir una breve descripción.</p>
+      </div>
+    </li>
+    <li class="logro-item">
+      <img src="logro3.jpg" alt="Imagen de logro" class="logro-image">
+      <div class="logro-content">
+        <h3 class="logro-title">Mundial de Ajedrez sede Lima</h3>
+        <p class="logro-text">Este es el contenido del tercer logro. Aquí puede ir una breve descripción.</p>
+      </div>
+    </li>
+  </ul>
+</div>
+</body>
+<footer class="footer" id="footer">
+  <div class="footer-left">
+    <img src="logo.jpg" alt="Imagen de la empresa" class="footer-image">
+    <div class="footer-location">
+      <i class="fas fa-map-marker-alt"></i>
+      <span>Jr.Jose Antonio Zela N°694, Juliaca, Peru</span>
+    </div>
+  </div>
+
+  <div class="footer-center">
+    <h3>Contacto</h3>
+    <p>Email: contacto&#64;ejemplo.com</p>
+    <p>Email: soporte&#64;ejemplo.com</p>
+    <p>Email: ventas&#64;ejemplo.com</p>
+    <p>Teléfono: +51 954 646 485</p>
+    <p>Teléfono: +51 954 646 485</p>
+    <p>Teléfono: +51 954 646 485</p>
+  </div>
+
+  <div class="footer-right">
+    <h3>Redes Sociales</h3>
+    <div class="social-buttons">
+      <a href="https://wa.me/+51954646485" class="social-button whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=100063752685833" class="social-button facebook" target="_blank">
+        <i class="fab fa-facebook-f"></i> Facebook
+      </a>
+      <a href="https://www.tiktok.com/@academiascolegios" class="social-button tiktok" target="_blank">
+        <i class="fab fa-tiktok"></i> TikTok
+      </a>
+      <a href="https://instagram.com" class="social-button instagram" target="_blank">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+    </div>
+  </div>
+</footer>
+</html>
+<script>
+  function scrollToComunicados() {
+    document.getElementById('comunicados').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function scrollToLogros() {
+    document.getElementById('logros').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function scrollToFooter() {
+    document.getElementById('footer').scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+
+<script>
+
+  function redirigir() {
+    window.location.href = "tu-archivo.html"; // Aquí puedes poner la URL o la ruta al archivo, si es archivo tiene que estar en la misma carpeta
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.carousel-image');
+    const totalImages = images.length;
+
+    function showImage(index) {
+      images.forEach((img, i) => {
+        img.style.display = 'none';
+      });
+
+      images[index].style.display = 'block';
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % totalImages;
+      showImage(currentIndex);
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+      showImage(currentIndex);
+    }
+
+    showImage(currentIndex);
+
+    setInterval(nextImage, 10000);
+
+    const nextButton = document.querySelector('.next-btn');
+    const prevButton = document.querySelector('.prev-btn');
+
+    if (nextButton) {
+      nextButton.addEventListener('click', nextImage);
+    }
+
+    if (prevButton) {
+      prevButton.addEventListener('click', prevImage);
+    }
+  });
+</script>
+
