@@ -47,7 +47,7 @@ export class FormCursoComponent implements OnInit {
     const kr: Curso = new Curso();
     kr.idCurso = this.form.value['idCurso'];
     kr.nombre = this.form.value['nombre'];
-    kr.nombre = this.form.value['promedioGeneral'];
+    kr.promedioGeneral = this.form.value['promedioGeneral'];
 
     if(this.CursoForm.valid){
       if(kr.idCurso > 0){

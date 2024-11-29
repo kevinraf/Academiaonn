@@ -1,5 +1,5 @@
 export class Curso {
-    idCurso: number;
-    nombre: string;
-    promedioGeneral: number;
+  idCurso: number = 0;
+  nombre: string = '';
+  promedioGeneral: number = 0;
 }

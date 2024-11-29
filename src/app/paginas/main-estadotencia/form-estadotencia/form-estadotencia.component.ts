@@ -24,7 +24,6 @@ export class FormEstadotenciaComponent implements OnInit {
   ){}
   ngOnInit(): void {
     if(this.data!==undefined){
-      console.log(this.data['nombre']);
 
       this.form = new FormGroup({
         idEstadotencia: new FormControl(this.data['idEstadotencia']),
